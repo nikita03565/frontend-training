@@ -2,7 +2,7 @@
   <nav>
     <div class="nav-wrapper grey darken-3">
       <div class="container">
-        <router-link to='/' class='brand-logo center'>Vue App</router-link>
+        <router-link to='/' class='brand-logo center'>ITinder</router-link>
         <ul id="nav-mobile" class="left">
           <li>
             <router-link to='/'><i class="large material-icons">home</i></router-link>

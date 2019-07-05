@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div
-      class="col s6"
+      class="col"
       v-for="(event, index) in events"
       v-bind:item="event"
       :index="index"
@@ -9,12 +9,12 @@
     >
       <div class="card">
         <div class="card-content">
-            <p class="card-title">
+            <div class="card-title">
                 <h3>{{ event.title }}</h3>
                 <p>{{ event.city }}, {{ event.date }}</p>
-                <p>{{ event.description }} </p>
+                <p class='limit-chars'>{{ event.description }} </p>
                 <i class="small material-icons right">favorite_border</i>
-            </p>
+            </div>
         </div>
       </div>
     </div>
@@ -42,3 +42,8 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+
+</style>
