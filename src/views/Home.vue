@@ -7,14 +7,12 @@
       :index="index"
       :key="event.id"
     >
-      <div class="card">
-        <div class="card-content">
-            <div class="card-title">
-                <h3>{{ event.title }}</h3>
-                <p>{{ event.city }}, {{ event.date }}</p>
-                <p class='limit-chars'>{{ event.description }} </p>
-                <i class="small material-icons right">favorite_border</i>
-            </div>
+      <div class="card bg-secondary text-light">
+        <div class="card-body" style="width: 18rem;">
+          <h3 class="card-title">{{ event.title }}</h3>
+          <p class="card-subtitle mb-2 text-light">{{ event.city }}, {{ event.date }}</p>
+          <p class="card-text">{{ event.description }}</p>
+          <i class="small material-icons right">favorite_border</i>
         </div>
       </div>
     </div>
@@ -44,6 +42,12 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
+body {
+  background-color: #0D0D0D;
+}
 
+.card {
+  margin-top: 5px;
+}
 </style>

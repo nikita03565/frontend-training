@@ -1,25 +1,27 @@
 <template>
-  <nav>
-    <div class="nav-wrapper grey darken-3">
-      <div class="container">
-        <router-link to='/' class='brand-logo center'>ITinder</router-link>
-        <ul id="nav-mobile" class="left">
-          <li>
-            <router-link to='/'><i class="large material-icons">home</i></router-link>
-          </li>
-          <li>
-            <router-link to='/users/me'><i class="large material-icons">account_circle</i></router-link>
-          </li>
-        </ul>
-        <ul id="nav-mobile" class="right">
-          <li>
-            <router-link to='/signin'>Sign In</router-link>
-          </li>
-          <li>
-            <router-link to='/signup'>Sign Up</router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <router-link to="/" class="navbar-brand mr-auto">ITinder</router-link>
+    <ul class="nav navbar-nav ml-auto">
+      <li class="nav-item">
+        <router-link to="/users/me" class='nav-link'>User</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/signin" class='nav-link'>Sign In</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link to="/signup" class='nav-link'>Sign Up</router-link>
+      </li>
+    </ul>
   </nav>
 </template>
+
+<style>
+@media (min-width: 768px) {
+.navbar-brand
+    {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+</style>

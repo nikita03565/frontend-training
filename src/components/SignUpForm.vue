@@ -1,26 +1,31 @@
 <template>
-  <form v-if="!loading" class="form" v-on:submit="onSubmit">
-    <div class="input-field">
+  <form v-if="!loading" v-on:submit="onSubmit" class='form text-light'>
+    <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" name="username" v-model="username" class="validate" />
+      <input type="text" id="username" v-model="username" class="form-control validate" placeholder="Enter username"/>
       <span class="helper-text" data-error="Username must not be empty"></span>
     </div>
-    <div class="input-field">
+    <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" name="email" v-model="email" class="validate" />
+      <input type="email" id="email" v-model="email" class=" form-control validate" placeholder='example@gmail.com'/>
       <span class="helper-text" data-error="Email must not be empty"></span>
     </div>
-    <div class="input-field">
+    <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" name="name" v-model="name" class="validate" />
+      <input type="text" id="name" v-model="name" class="form-control  validate" placeholder="Your name"/>
       <span class="helper-text" data-error="Name must not be empty"></span>
     </div>
-    <div class="input-field">
-      <label for="passowrd">Password</label>
-      <input type="password" name="password" v-model="password" class="validate" />
+    <div class="form-group">
+      <label for="passowrd1">Password</label>
+      <input type="password" id="password1" v-model="password" class=" form-control validate" placeholder="Password"/>
       <span class="helper-text" data-error="Password must not be empty"></span>
     </div>
-    <button type="submit" class="waves-effect waves-light btn">SignUp</button>
+    <div class="form-group">
+      <label for="passowrd2">Confirm password</label>
+      <input type="password" id="password2" v-model="password" class=" form-control validate" placeholder="Password again"/>
+      <span class="helper-text" data-error="Password must not be empty"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">SignUp</button>
   </form>
 </template>
 
