@@ -2,7 +2,7 @@
   <div class="row">
     <div
       class="col"
-      v-for="(event, index) in events"
+      v-for="(event, index) in getAllEvents"
       v-bind:item="event"
       :index="index"
       :key="event.id"
@@ -20,23 +20,14 @@
 </template>
 
 <script>
-import EventService from "../service";
-const eventService = new EventService();
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "Home",
-  data() {
-    return {
-      events: []
-    };
-  },
-  created() {
-    eventService
-      .getAll()
-      .then(res => {
-        this.events = res.data;
-        console.log(this.events);
-      })
-      .catch(err => console.error(err));
+  computed: mapGetters(["getAllEvents"]),
+  methods: mapActions(["fetchAllEvents"]),
+  async mounted() {
+    this.fetchAllEvents(); 
   }
 };
 </script>
@@ -44,7 +35,7 @@ export default {
 
 <style>
 body {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
 }
 
 .card {
