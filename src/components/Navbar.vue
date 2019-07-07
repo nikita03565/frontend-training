@@ -11,9 +11,26 @@
       <li class="nav-item">
         <router-link to="/signup" class='nav-link'>Sign Up</router-link>
       </li>
+      <router-link to="/about">About</router-link><span v-if="isSignedIn"> | <a @click="signout">SignOut</a></span>
     </ul>
   </nav>
 </template>
+
+<script>
+export default {
+  computed : {
+      isSignedIn : function(){ return this.$store.getters.isSignedIn}
+    },
+    methods: {
+      signout: function () {
+        this.$store.dispatch('signout')
+        .then(() => {
+          this.$router.push('/signin')
+        })
+      }
+    },
+}
+</script>
 
 <style>
 @media (min-width: 768px) {

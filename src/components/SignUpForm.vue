@@ -1,5 +1,5 @@
 <template>
-  <form v-if="!loading" v-on:submit="onSubmit" class='form text-light'>
+  <form v-if="!loading" class='form text-light signup' @submit.prevent="signup">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" id="username" v-model="username" class="form-control validate" placeholder="Enter username"/>
@@ -16,13 +16,13 @@
       <span class="helper-text" data-error="Name must not be empty"></span>
     </div>
     <div class="form-group">
-      <label for="passowrd1">Password</label>
-      <input type="password" id="password1" v-model="password" class=" form-control validate" placeholder="Password"/>
+      <label for="password1">Password</label>
+      <input type="password" id="password1" v-model="password1" class=" form-control validate" placeholder="Password"/>
       <span class="helper-text" data-error="Password must not be empty"></span>
     </div>
     <div class="form-group">
-      <label for="passowrd2">Confirm password</label>
-      <input type="password" id="password2" v-model="password" class=" form-control validate" placeholder="Password again"/>
+      <label for="password2">Confirm password</label>
+      <input type="password" id="password2" v-model="password2" class=" form-control validate" placeholder="Password again"/>
       <span class="helper-text" data-error="Password must not be empty"></span>
     </div>
     <button type="submit" class="btn btn-primary">SignUp</button>
@@ -38,10 +38,24 @@ export default {
       name: "",
       username: "",
       email: "",
-      name: "",
-      password: ""
+      password1: "",
+      password2: ""
     };
-  }
+  },
+  methods: {
+      signup: function () {
+        let data = {
+          name: this.name,
+          username: this.username,
+          email: this.email,
+          password: this.password,
+          //is_admin: this.is_admin
+        }
+        this.$store.dispatch('signup', data)
+       .then(() => this.$router.push('/'))
+       .catch(err => console.log(err))
+      }
+    }
 };
 </script>
 

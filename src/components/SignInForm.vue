@@ -1,9 +1,9 @@
 <template>
-  <form v-if="!loading" v-on:submit="onSubmit" class='form text-light'>
+  <form v-if="!loading" class='form text-light signin' @submit.prevent="signin">
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" v-model="email" class=" form-control validate" placeholder='example@gmail.com'/>
-      <span class="helper-text" data-error="Email must not be empty"></span>
+      <label for="username">Username</label>
+      <input type="text" id="username" v-model="username" class="form-control validate" placeholder="Enter username"/>
+      <span class="helper-text" data-error="Username must not be empty"></span>
     </div>
     <div class="form-group">
       <label for="passowrd1">Password</label>
@@ -20,13 +20,19 @@ export default {
   data() {
     return {
       loading: false,
-      name: "",
       username: "",
-      email: "",
-      name: "",
       password: ""
     };
-  }
+  },
+  methods: {
+      signin: function () {
+        let username = this.username 
+        let password = this.password
+        this.$store.dispatch('signin', { username, password })
+       .then(() => this.$router.push('/'))
+       .catch(err => console.log(err))
+      }
+    }
 };
 </script>
 
