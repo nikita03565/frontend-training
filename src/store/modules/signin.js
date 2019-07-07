@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { AlertPlugin } from 'bootstrap-vue';
 
 export default {
     state: {
@@ -34,11 +33,12 @@ export default {
                     method: 'POST'
                 })
                     .then(resp => {
-                        console.log(resp);
-
                         const access_token = resp.data.access_token;
+                        const refresh_token = resp.data.refresh_token;
                         const user = resp.data.user;
                         localStorage.setItem('access_token', access_token);
+                        localStorage.setItem('refresh_token', refresh_token);
+
                         axios.defaults.headers.common['Authorization'] =
                             'Bearer ' + access_token;
                         commit('auth_success', access_token, user);
@@ -60,10 +60,11 @@ export default {
                     method: 'POST'
                 })
                     .then(resp => {
-                        console.log(resp);
                         const access_token = resp.data.access_token;
+                        const refresh_token = resp.data.refresh_token;
                         const user = resp.data.user;
                         localStorage.setItem('access_token', access_token);
+                        localStorage.setItem('refresh_token', refresh_token);
                         axios.defaults.headers.common[
                             'Authorization'
                         ] = access_token;

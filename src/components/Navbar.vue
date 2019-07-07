@@ -3,15 +3,18 @@
     <router-link to="/" class="navbar-brand mr-auto">ITinder</router-link>
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item">
-        <router-link to="/users/me" class='nav-link'>User</router-link>
+        <router-link to="/users/me" v-if="isSignedIn" class='nav-link'>User</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/signin" class='nav-link'>Sign In</router-link>
+        <router-link to="/signout" v-if="isSignedIn" class='nav-link'>Sign Out</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/signup" class='nav-link'>Sign Up</router-link>
+        <router-link to="/signin" v-if="!isSignedIn" class='nav-link'>Sign In</router-link>
       </li>
-      <router-link to="/about">About</router-link><span v-if="isSignedIn"> | <a @click="signout">SignOut</a></span>
+      <li class="nav-item">
+        <router-link to="/signup" v-if="!isSignedIn" class='nav-link'>Sign Up</router-link>
+      </li>
+      <!-- <router-link to="/about">About</router-link><span v-if="isSignedIn"> | <a @click="signout">SignOut</a></span> -->
     </ul>
   </nav>
 </template>

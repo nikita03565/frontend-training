@@ -2,12 +2,12 @@
   <form v-if="!loading" class='form text-light signup' @submit.prevent="signup">
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" id="username" v-model="username" class="form-control validate" placeholder="Enter username"/>
+      <input type="text" id="username" v-model="username" class="form-control validate" placeholder="Enter username" required/>
       <span class="helper-text" data-error="Username must not be empty"></span>
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" v-model="email" class=" form-control validate" placeholder='example@gmail.com'/>
+      <input type="email" id="email" v-model="email" class=" form-control validate" placeholder='example@gmail.com' required/>
       <span class="helper-text" data-error="Email must not be empty"></span>
     </div>
     <div class="form-group">
@@ -17,12 +17,12 @@
     </div>
     <div class="form-group">
       <label for="password1">Password</label>
-      <input type="password" id="password1" v-model="password1" class=" form-control validate" placeholder="Password"/>
+      <input type="password" id="password1" v-model="password1" class=" form-control validate" placeholder="Password" required/>
       <span class="helper-text" data-error="Password must not be empty"></span>
     </div>
     <div class="form-group">
       <label for="password2">Confirm password</label>
-      <input type="password" id="password2" v-model="password2" class=" form-control validate" placeholder="Password again"/>
+      <input type="password" id="password2" v-model="password2" class=" form-control validate" placeholder="Password again" required/>
       <span class="helper-text" data-error="Password must not be empty"></span>
     </div>
     <button type="submit" class="btn btn-primary">SignUp</button>
@@ -48,12 +48,12 @@ export default {
           name: this.name,
           username: this.username,
           email: this.email,
-          password: this.password,
+          password: this.password1 === this.password2 ? this.password1 : None,
           //is_admin: this.is_admin
         }
         this.$store.dispatch('signup', data)
        .then(() => this.$router.push('/'))
-       .catch(err => console.log(err))
+       .catch(err => console.log(err.response))
       }
     }
 };
